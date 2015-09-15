@@ -1,0 +1,5 @@
+--color
+--backtrace
+--order random
+--format progress
+--require spec_helper
