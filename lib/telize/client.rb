@@ -41,7 +41,7 @@ module Telize
 
     def decode_body(body)
       MultiJson.load(body)
-    ensure
+    rescue MultiJson::ParseError => _
       {}
     end
   end

@@ -120,5 +120,18 @@ RSpec.describe Telize do
 
       it { is_expected.to eq({}) }
     end
+
+    context 'when bad json is given' do
+      let(:response) { '{":"bla bla bla"' }
+
+      subject { Telize.geoip }
+
+      before do
+        stub_request(:get, 'http://www.telize.com/geoip').
+          to_return(status: 200, body: response, headers: { 'Content-Type' => 'application/json' })
+      end
+
+      it { is_expected.to eq({}) }
+    end
   end
 end
